@@ -1,15 +1,18 @@
-import firebase from 'firebase/app'
-import 'firebase/firebase'
+import { initializeApp } from 'firebase/app'
+import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
     apiKey: "AIzaSyAiaQHVnQlCdUA0DNmU3p8wQhUE-8cuQXw",
-    authDomain: "autenticacao-53942.firebaseapp.com",
-    projectId: "autenticacao-53942",
-    storageBucket: "autenticacao-53942.appspot.com",
-    messagingSenderId: "910794912881",
-    appId: "1:910794912881:web:875cfd2d19e4e4841a57d0"
+    authDomain: "cestas-organicas.firebaseapp.com",
+    projectId: "cestas-organicas",
+    storageBucket: "cestas-organicas.appspot.com",
+    messagingSenderId: "810460170618",
+    appId: "1:810460170618:web:682b1d0de3c02ca60f2ec3"
 };
 
-firebase.initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig)
 
-export default firebase;
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+export default app;

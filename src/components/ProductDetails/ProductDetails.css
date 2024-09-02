@@ -1,0 +1,39 @@
+.product-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-img {
+    width: 45%;
+}
+
+.product-img img {
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.product-info {
+    width: 50%;
+}
+
+.product-info p {
+    line-height: 1.5rem;
+}
+
+.button {
+    all: unset;
+    margin-top: 1rem;
+    padding: 1em 2.5em;
+    background-color: var(--accent);
+    border-radius: .5rem;
+    display: inline-block;
+    z-index: 1;
+    transition: transform ease 0.2s;
+    white-space: nowrap;
+}
+
+.button:hover {
+    transform: translate(0, -3px);
+    transition: transform ease 0.2s;
+    cursor: pointer;
+}

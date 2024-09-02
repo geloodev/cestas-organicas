@@ -41,6 +41,14 @@
     gap: 5%;
 }
 
+.menu button {
+    all: unset;
+}
+
+.menu button:hover {
+    cursor: pointer;
+}
+
 .menu-item {
     font-size: .8rem;
     width: 100%;

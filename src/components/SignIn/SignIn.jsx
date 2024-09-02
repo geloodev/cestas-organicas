@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { UserContext } from '../../context/UserProvider'
-import './Register.css'
+import './SignIn.css'
 
 
 function Register() {
-    const { storeUser } = useContext(UserContext)
+    const { authenticateUser } = useContext(UserContext)
+    const [errorMessage, setErrorMessage] = useState('')
     const [user, setUser] = useState({
         email: '',
         password: '',
-        address: ''
     })
 
     function handleChange(e) {
@@ -20,13 +20,14 @@ function Register() {
         })
     }
 
-    function handleStoreUser() {
-        storeUser(user)
+    async function handleAuthenticateUser() {
+        let isAuthenticated = await authenticateUser(user)
+        setErrorMessage(isAuthenticated ? '' : 'Email ou senha inválidos.')
     }
 
     return (
-        <div className="register">
-            <h1>Cadastro</h1>
+        <div className="sign-in">
+            <h1>Entrar</h1>
             <div className="form">
                 <input 
                     type="email" 
@@ -42,16 +43,15 @@ function Register() {
                     placeholder="Senha" 
                     onChange={handleChange}
                 />
-                <input 
-                    type="text" 
-                    id="address" 
-                    name="address" 
-                    placeholder="Endereço" 
-                    onChange={handleChange}
-                />
-                <button onClick={ handleStoreUser }>Cadastrar</button>
+                { errorMessage &&
+                    <div className="error">
+                        <i class="bx bx-error-circle"></i>
+                        { errorMessage }
+                    </div>
+                }
+                <button onClick={ handleAuthenticateUser }>Entrar</button>
                 <p>
-                    Já possui conta? Faça o <NavLink to='/entrar'>Login</NavLink>.
+                    Novo por aqui? Faça o <NavLink to='/cadastro'>Cadastro</NavLink>.
                 </p>
             </div>
         </div>

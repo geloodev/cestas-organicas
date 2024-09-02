@@ -5,15 +5,19 @@ import Home from './components/Home/Home'
 import Products from './components/Products/Products'
 import Footer from './components/Footer/Footer'
 import Register from './components/Register/Register'
+import SignIn from './components/SignIn/SignIn'
+import ProductDetails from './components/ProductDetails/ProductDetails'
+import Cart from './components/Cart/Cart'
 import ProductsProvider from './context/ProductsProvider'
-import RegisterProvider from './context/RegisterProvider'
-
+import UserProvider from './context/UserProvider'
 
 function App() {
     return (
         <div className="App">
             <BrowserRouter>
-                <Header/>
+                <UserProvider>
+                    <Header/>
+                </UserProvider>
                 <main>
                     <Routes>
                         <Route path="/" element={ <Home/> } />
@@ -21,13 +25,16 @@ function App() {
                     <ProductsProvider>
                         <Routes>
                             <Route path="/produtos" element={ <Products/> } />
+                            <Route path="/produtos/:id" element={ <ProductDetails/> } />
+                            <Route path="/carrinho" element={ <Cart/> } />
                         </Routes>
                     </ProductsProvider>
-                    <RegisterProvider>
+                    <UserProvider>
                         <Routes>
+                            <Route path="/entrar" element={ <SignIn/> } />
                             <Route path="/cadastro" element={ <Register/> } />
                         </Routes>
-                    </RegisterProvider>
+                    </UserProvider>
                 </main>
                 <Footer/>
             </BrowserRouter>

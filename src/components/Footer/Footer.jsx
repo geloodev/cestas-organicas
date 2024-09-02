@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 function Footer() {
     return (
         <footer>
-            <p>Feito com ❤️ por <NavLink>geloodev</NavLink>.</p>
+            <p>© Copyright 2024. Feito com ❤️ por Ângelo Holandini.</p>
         </footer>
     )
 }
